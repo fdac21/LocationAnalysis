@@ -1,13 +1,6 @@
 import locations from '../raw_locations'
 import haversine from 'haversine'
 
-const SCHOOL = { latitude: 35.9597503, longitude: -83.9254014 }
-
-function getMinutesIntoDay (ms) {
-    const d = new Date(ms)
-    return d.getHours() * 60 + d.getMinutes()
-}
-
 export function getStatesVisited () {
     // Placeholder for calculation
     return 7
