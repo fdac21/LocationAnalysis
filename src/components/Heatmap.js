@@ -4,12 +4,15 @@
 import React, { useEffect } from 'react'
 import locations from '../weighted_locations'
 
-const heatmapData = locations.map(l => {
-    return { location: new google.maps.LatLng(l.lat, l.lng), weight: l.weight }
-})
-
 const Heatmap = () => {
     useEffect(() => {
+        // Save on API calls
+        return
+
+        const heatmapData = locations.map(l => {
+            return { location: new google.maps.LatLng(l.lat, l.lng), weight: l.weight }
+        })
+
         const map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(35.9346591, -84.1636153),
             zoom: 5,
@@ -28,7 +31,7 @@ const Heatmap = () => {
     }, [])
 
     return (
-        <div id="map" style={{ height: 500, width: '100%' }}>
+        <div id="map" style={{ height: 500, width: '100%', backgroundColor: 'gray' }}>
         </div>
     )
 }
