@@ -6,7 +6,6 @@ import locations from '../weighted_locations'
 
 const Heatmap = () => {
     useEffect(() => {
-        // Save on API calls
         return
 
         const heatmapData = locations.map(l => {
@@ -31,7 +30,7 @@ const Heatmap = () => {
     }, [])
 
     return (
-        <div id="map" style={{ height: 500, width: '100%', backgroundColor: 'gray' }}>
+        <div id="map" style={{ height: 600, width: '100%', backgroundColor: 'gray', borderRadius: '15px' }}>
         </div>
     )
 }
