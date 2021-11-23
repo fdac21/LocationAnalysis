@@ -5,7 +5,7 @@ const daysOfWeek = { 0: 'Sun', 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thu', 5: 'Fri',
 
 export function getStatesVisited () {
     // Placeholder for calculation
-    return 7
+    return 9
 }
 
 function getMilesTraveled (locs) {
