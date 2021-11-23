@@ -1,26 +1,51 @@
 import locations from '../raw_locations'
 import haversine from 'haversine'
 
+const daysOfWeek = { 0: 'Sun', 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thu', 5: 'Fri', 6: 'Sat' }
+
 export function getStatesVisited () {
     // Placeholder for calculation
     return 7
 }
 
-export function getMilesTraveled () {
+function getMilesTraveled (locs) {
     let sum = 0
 
-    let prevLoc = locations[0]
-    for (const loc of locations.slice(1)) {
+    if (locs.length === 0) { return sum }
+
+    let prevLoc = locs[0]
+    for (const loc of locs.slice(1)) {
         const dist = haversine(prevLoc, loc, { unit: 'mile' })
 
-        // Only sum distances under 5 miles. Distances greater than this are
+        // Only sum distances under 2 miles. Distances greater than this are
         // usually an error within the location tracking software
-        if (dist < 5) { sum += dist }
+        if (dist < 2) { sum += dist }
 
         prevLoc = loc
     }
 
-    return Math.round(sum).toLocaleString()
+    return Math.round(sum)
+}
+
+export function getTotalMilesTraveled () {
+    return getMilesTraveled(locations).toLocaleString()
+}
+
+export function getMilesTraveledPastWeek () {
+    // hard code new Date(2021, 10, 10) for now since locations are saved locally instead of from API
+    const weekLocations = locations.filter(l => new Date(2021, 10, 10).getTime() - l.date < 604800000)
+
+    const result = []
+    for (const day of Object.keys(daysOfWeek)) {
+        const dayLocations = weekLocations.filter(l => new Date(l.date).getDay() == day)
+        result.push({
+            name: daysOfWeek[day],
+            value: getMilesTraveled(dayLocations)
+        })
+    }
+
+    console.log(result)
+    return result
 }
 
 export function getLongestTrip () {

@@ -6,6 +6,8 @@ import locations from '../weighted_locations'
 
 const Heatmap = () => {
     useEffect(() => {
+        return
+
         const heatmapData = locations.map(l => {
             return { location: new google.maps.LatLng(l.lat, l.lng), weight: l.weight }
         })

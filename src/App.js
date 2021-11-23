@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Heatmap from './components/Heatmap'
 import NumberCard from './components/NumberCard'
 import TitleCard from './components/TitleCard'
+import TravelGraph from './components/TravelGraph'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import * as LocationService from './services/LocationService'
 
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
     display: inline-block;
-    width: 80%;
+    width: 90%;
     padding: 40px;
 `
 
@@ -32,11 +33,16 @@ const App = () => {
                         </Col>
                     </Row>
                     <Row style={{ marginTop: 15 }}>
+                        <Col xs>
+                            <TravelGraph></TravelGraph>
+                        </Col>
+                    </Row>
+                    <Row style={{ marginTop: 15 }}>
                         <Col md={6}>
-                            <NumberCard number={LocationService.getStatesVisited()} desc="States Visited" icon="map"></NumberCard>
+                            <NumberCard number={LocationService.getStatesVisited().toString()} desc="States Visited" icon="map"></NumberCard>
                         </Col>
                         <Col md={6}>
-                            <NumberCard number={LocationService.getMilesTraveled()} desc="Miles Traveled" icon="car"></NumberCard>
+                            <NumberCard number={LocationService.getTotalMilesTraveled()} desc="Miles Traveled" icon="car"></NumberCard>
                         </Col>
                     </Row>
                     <Row style={{ marginTop: 15 }}>
