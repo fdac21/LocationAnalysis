@@ -12,7 +12,7 @@ const Heatmap = () => {
 
         const map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(35.9346591, -84.1636153),
-            zoom: 5,
+            zoom: 6,
             maxZoom: 7,
             minZoom: 2,
             mapTypeId: 'hybrid',

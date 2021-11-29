@@ -5,7 +5,7 @@ const daysOfWeek = { 0: 'Sun', 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thu', 5: 'Fri',
 
 export function getStatesVisited () {
     // Placeholder for calculation
-    return 9
+    return 5
 }
 
 function getMilesTraveled (locs) {
@@ -19,7 +19,7 @@ function getMilesTraveled (locs) {
 
         // Only sum distances under 2 miles. Distances greater than this are
         // usually an error within the location tracking software
-        if (dist < 2) { sum += dist }
+        if (dist < 5) { sum += dist }
 
         prevLoc = loc
     }
@@ -33,7 +33,7 @@ export function getTotalMilesTraveled () {
 
 export function getMilesTraveledPastWeek () {
     // hard code new Date(2021, 10, 10) for now since locations are saved locally instead of from API
-    const weekLocations = locations.filter(l => new Date(2021, 10, 10).getTime() - l.date < 604800000)
+    const weekLocations = locations.filter(l => new Date(2021, 10, 29).getTime() - l.date < 604800000)
 
     const result = []
     for (const day of Object.keys(daysOfWeek)) {

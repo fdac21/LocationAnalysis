@@ -5,7 +5,7 @@
 
 import fs from 'fs'
 
-const WEIGHT_SIZE = 0.1
+const WEIGHT_SIZE = 0.05
 const WEIGHT_UPDATE = 0.5
 const WEIGHT_MAX = 5
 
@@ -27,4 +27,5 @@ for (const loc of locations) {
 
 const newLocations = Object.keys(coordmap).map(k => coordmap[k])
 
-fs.writeFileSync("./src/locations.json", JSON.stringify(newLocations, 0, 2))
+fs.writeFileSync("./src/weighted_locations.json", JSON.stringify(newLocations, 0, 2))
+fs.writeFileSync("./src/raw_locations.json", JSON.stringify(locations, 0, 2))
